@@ -2,6 +2,11 @@
     "name" : "nullpointer-i18n",
     "version" : "0.0.1-SNAPSHOT",
 
+    "author": {
+        "name": "Nullpointer",
+        "url": "http://null-pointer.ru/"
+    },
+
     "repository": {
     },
 
