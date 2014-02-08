@@ -1,0 +1,15 @@
+{
+    "name" : "nullpointer-i18n",
+    "version" : "0.0.1-SNAPSHOT",
+
+    "repository": {
+    },
+
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-contrib-jshint": "~0.7.2"
+    },
+
+    "dependencies": {
+    }
+}
