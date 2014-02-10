@@ -1,35 +1,6 @@
 //
 module.exports = function(grunt) {
-    /*
-    grunt.initConfig({
-        jshint: {}
-    });
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-
-    grunt.registerTask('default', ['jshint']);
-    */
-
-    /*
-    grunt.initConfig({
-
-        // server-side tests
-        mochaTest: {
-            test: {
-                options: {
-                    reporter: 'spec'
-                },
-                src: ['test/*_test.js']
-            }
-        }
-    });
-
-    grunt.loadNpmTasks('grunt-mocha-test');
-
-    grunt.registerTask('default', ['mochaTest']);
-    */
-
-    //
     var testServerPort = 9000;
 
     grunt.initConfig({
