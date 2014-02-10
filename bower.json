@@ -1,0 +1,33 @@
+{
+    "name" : "nullpointer-i18n",
+
+    "main": "",
+    "ignore": [],
+
+    "dependencies": {
+        "requirejs": "2.*",
+        "requirejs-text": "2.0.*",
+        "jquery": "1.9.x",
+        "underscore": "1.4.x"
+    },
+
+    "exportsOverride": {
+        "requirejs": {
+            "": "require.js"
+        },
+        "requirejs-text": {
+            "": "text.js"
+        },
+        "jquery": {
+            "": "jquery.js"
+        },
+        "underscore": {
+            "": "underscore.js"
+        }
+    },
+
+    "devDependencies": {
+    },
+
+    "private": true
+}

@@ -8,4 +8,9 @@
 
 /node_modules
 
+.bowerrc
+/bower_components
+
+/lib
+
 *.versionsBackup
