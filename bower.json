@@ -1,8 +1,9 @@
 {
     "name" : "nullpointer-i18n",
+    "version" : "0.0.1-SNAPSHOT",
+    "description": "i18n RequireJS-module",
 
-    "main": "",
-    "ignore": [],
+    "ignore": [".*", "bower_components", "lib", "node_modules", "test", "tmp", "Gruntfile.js", "package.json"],
 
     "dependencies": {
         "requirejs": "2.*",
