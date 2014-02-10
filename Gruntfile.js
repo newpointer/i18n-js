@@ -4,6 +4,8 @@ module.exports = function(grunt) {
     var testServerPort = 9000;
 
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+
         clean: ['node_modules', 'bower_components'],
 
         bower: {
@@ -49,6 +51,13 @@ module.exports = function(grunt) {
                 '-W069': true
             },
             src: ['src/**/*.js']
+        },
+
+        copy: {
+            dist: {
+                src: 'src/i18n.js',
+                dest: 'i18n.js'
+            }
         }
     });
 
@@ -57,8 +66,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.registerTask('init', ['bower']);
     grunt.registerTask('test', ['connect', 'shell:mocha-phantomjs-tests']);
     grunt.registerTask('build', ['bower', 'jshint:src', 'connect', 'shell:mocha-phantomjs-tests']);
+    grunt.registerTask('dist', ['build', 'copy:dist']);
 };
