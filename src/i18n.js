@@ -1,92 +1,11 @@
 /**
  * @module i18n
  * @desc RequireJS-модуль интернационализации
- *
  * @author ankostyuk
- *
- * @example
- *
-    // Импорт
-    var i18n = require('i18n');
-
-    // Конфигурирование
-    i18n.setConfig({
-        templateSettings: {
-            evaluate:       '',
-            interpolate:    /\$\{([\s\S]+?)\}/g,
-            escape:         ''
-        },
-        escape: false
-    });
- *
- *
- * @example
- *
-    // Формат bundle.json
-    // Сводный бандл для языков
-    {
-
-        // Бандл для конкретного языка
-        "lang_key_1": {
-
-            // Заголовок
-            "": {
-
-                // Описание форм множественного числа
-                "pluralForms": {
-
-                    // Кол-во форм
-                    "count": 2,
-
-                    // C-like код вычисления индекса формы
-                    "ruleCode": "n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5",
-
-                    // CLDR формат
-                    // http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
-                    "cldrFormat": "zero{{0}}one{{1}}two{{2}}few{{3}}many{{4}}other{{5}}"
-                }
-            }
-
-            // Сообщения по ключу
-            "key": [
-
-                // Зарезервированно для простого множественного числа. В данный момент не используется
-                null,
-
-                // Сообщение по ключу или единственное число при формах множественного числа (форма 0).
-                "сообщение",
-
-                // Множественное число при формах множественного числа (форма 1).
-                "сообщения",
-
-                ...
-
-                // Множественное число при формах множественного числа (форма N).
-                "сообщений"
-            ],
-
-            ...
-
-            // Сообщения по ключу и контексту
-            "context\u0004key": [
-                ...
-            ]
-        }
-
-        ...
-
-        // Бандл для конкретного языка
-        "lang_key_N": {
-        }
-    }
- *
  */
 define(function(require) {'use strict';
 
-    // @Deprecated
-    var bundleContent       = require('text!./bundle/bundle.json');
-                              require('underscore');
-                              require('jquery');
+    require('underscore');
     //
 
     var root = window;
@@ -94,9 +13,9 @@ define(function(require) {'use strict';
     var CONTEXT_GLUE = '\u0004';
     var PLURAL_FORM_SEPARATOR = '/';
 
-    var bundle = $.parseJSON(bundleContent);
+    var bundle = {};
 
-    var pluralFormFuncs = buildPluralFormFuncs();
+    var pluralFormFuncs = {};
 
     var langBundle = null;
     var langPluralFormIndex = null;
@@ -107,6 +26,19 @@ define(function(require) {'use strict';
 
     function setConfig(options) {
         _.extend(config, options);
+    }
+
+    function setBundle(bundleJSON) {
+        bundle = bundleJSON;
+        pluralFormFuncs = buildPluralFormFuncs();
+    }
+
+    function setLang(lang) {
+        langBundle = bundle[lang];
+        if (!langBundle) {
+            throw new Error('Lang is not supported: ' + lang);
+        }
+        langPluralFormIndex = pluralFormFuncs[lang];
     }
 
     function buildPluralFormFuncs() {
@@ -120,20 +52,12 @@ define(function(require) {'use strict';
         return r;
     }
 
-    function setLang(lang) {
-        langBundle = bundle[lang];
-        if (!langBundle) {
-            throw new Error('Lang is not supported: ' + lang);
-        }
-        langPluralFormIndex = pluralFormFuncs[lang];
-    }
-
     function getMessage(key, context, index) {
         var r = key;
 
         var messages = langBundle[context ? (context + CONTEXT_GLUE + key) : key];
 
-        if ($.isArray(messages)) {
+        if (_.isArray(messages)) {
             var message = messages[index];
 
             if (message && message !== '') {
@@ -177,21 +101,8 @@ define(function(require) {'use strict';
 
     //
     return {
-        /**
-         * @method
-         *
-         * @desc Конфигурирование
-         *
-         * @param {object} options - конфиг
-         *
-         * @property {object}   options.templateSettings    -
-         * Настройки шаблонизатора underscore.js для перевода шаблонов.
-         * Должны отличаться от общих настроек шаблонизатора.
-         * Т.к. смысл шаблонизации i18n: только перевести текст шаблона, а далее использовать переведённый шаблон с шаблонизатором по умолчанию.
-         * @property {boolean}  options.escape              - Экранировать перевод?
-         */
         setConfig: setConfig,
-
+        setBundle: setBundle,
         setLang: setLang,
         translateTemplate: translateTemplate,
         translateFuncs: {

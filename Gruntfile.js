@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     var testServerPort = 9000;
 
     grunt.initConfig({
-        clean: ['node_modules', 'bower_components', 'docs'],
+        clean: ['node_modules', 'bower_components', 'lib', 'docs'],
 
         bower: {
             install: {
@@ -36,6 +36,7 @@ module.exports = function(grunt) {
             'mocha-phantomjs-tests': {
                 command: 'node_modules/mocha-phantomjs/bin/mocha-phantomjs -R spec http://localhost:' + testServerPort + '/test/test.html',
                 options: {
+                    failOnError: true,
                     stdout: true,
                     stderr: true
                 }
@@ -55,15 +56,10 @@ module.exports = function(grunt) {
             dist: {
                 src: 'src/i18n.js',
                 dest: 'i18n.js'
-            }
-        },
-
-        jsdoc : {
-            dist : {
-                src: ['src/*.js'],
-                options: {
-                    destination: 'docs'
-                }
+            },
+            docs: {
+                src: 'src/i18n.md',
+                dest: 'docs/i18n.md'
             }
         }
     });
@@ -74,10 +70,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-jsdoc');
 
     grunt.registerTask('init', ['bower']);
     grunt.registerTask('build', ['bower', 'jshint:src', 'connect', 'shell:mocha-phantomjs-tests']);
     grunt.registerTask('test', ['connect', 'shell:mocha-phantomjs-tests']);
-    grunt.registerTask('dist', ['build', 'copy:dist', 'jsdoc']);
+    grunt.registerTask('dist', ['build', 'copy:dist', 'copy:docs']);
 };
