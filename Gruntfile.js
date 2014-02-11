@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     var testServerPort = 9000;
 
     grunt.initConfig({
-        clean: ['node_modules', 'bower_components', 'lib', 'docs'],
+        clean: ['node_modules', 'bower_components', 'lib'],
 
         bower: {
             install: {
