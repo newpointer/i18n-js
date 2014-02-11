@@ -15,3 +15,4 @@ tmp/
 /lib
 
 *.versionsBackup
+*.log
