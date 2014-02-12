@@ -11,7 +11,7 @@ define(function(require) {'use strict';
     var root = window;
 
     var CONTEXT_GLUE = '\u0004';
-    var PLURAL_FORM_SEPARATOR = '/';
+    var PLURAL_FORM_SEPARATOR = '|';
 
     var bundle = {};
 
