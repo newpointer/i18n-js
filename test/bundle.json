@@ -26,7 +26,12 @@
       "ключей"
     ],
     "корова": [
-      null
+      null,
+      ""
+    ],
+    "SYSTEM_ERROR": [
+      null,
+      "Системная ошибка"
     ]
   },
   "en": {
@@ -55,6 +60,10 @@
     "корова": [
       null,
       "cow"
+    ],
+    "SYSTEM_ERROR": [
+      null,
+      "System error"
     ]
   }
 }
