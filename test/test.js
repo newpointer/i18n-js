@@ -2,10 +2,12 @@ require.config({
     baseUrl: '/',
 
     paths: {
-        // path to src dependencies files // TODO use bower
-        'jquery':       'lib/jquery/jquery',
+        // path to src dependencies files
         'underscore':   'lib/underscore/underscore',
-        'text':         'lib/requirejs-text/text', // @Deprecated
+
+        // path to src dev dependencies files
+        'jquery':       'lib/jquery/jquery',
+        'text':         'lib/requirejs-text/text',
 
         // paths to test-framework files
         'mocha':        'node_modules/mocha/mocha',

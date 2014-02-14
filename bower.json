@@ -8,6 +8,11 @@
 
     "dependencies": {
         "requirejs": "2.*",
+        "underscore": "1.4.x"
+    },
+
+    "devDependencies": {
+        "requirejs": "2.*",
         "requirejs-text": "2.0.*",
         "jquery": "1.9.x",
         "underscore": "1.4.x"
@@ -26,9 +31,6 @@
         "underscore": {
             "": "underscore.js"
         }
-    },
-
-    "devDependencies": {
     },
 
     "private": true

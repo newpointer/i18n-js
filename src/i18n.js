@@ -8,16 +8,12 @@ define(function(require) {'use strict';
     require('underscore');
     //
 
-    var root = window;
-
-    var CONTEXT_GLUE = '\u0004';
-
-    var bundle = {};
-
-    var pluralFormFuncs = {};
-
-    var langBundle = null;
-    var langPluralFormIndex = null;
+    var root                    = window,
+        CONTEXT_GLUE            = '\u0004',
+        bundle                  = {},
+        pluralFormFuncs         = {},
+        langBundle              = null,
+        langPluralFormIndex     = null;
 
     var config = {
         escape: true
@@ -52,9 +48,8 @@ define(function(require) {'use strict';
     }
 
     function getMessage(key, context, index) {
-        var r = key;
-
-        var messages = langBundle[context ? (context + CONTEXT_GLUE + key) : key];
+        var r           = key,
+            messages    = langBundle[context ? (context + CONTEXT_GLUE + key) : key];
 
         if (_.isArray(messages)) {
             var message = messages[index];

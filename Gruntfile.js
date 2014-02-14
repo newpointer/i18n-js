@@ -17,7 +17,7 @@ module.exports = function(grunt) {
                     cleanBowerDir: false,
                     bowerOptions: {
                         forceLatest: true,
-                        production: true
+                        production: false
                     }
                 }
             }
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.registerTask('init', ['bower']);
-    grunt.registerTask('build', ['bower', 'jshint:src', 'connect', 'shell:mocha-phantomjs-tests']);
+    grunt.registerTask('build', ['bower', 'jshint', 'connect', 'shell:mocha-phantomjs-tests']);
     grunt.registerTask('test', ['connect', 'shell:mocha-phantomjs-tests']);
     grunt.registerTask('dist', ['build', 'copy:dist', 'copy:docs']);
 };
