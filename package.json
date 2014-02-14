@@ -2,6 +2,7 @@
     "name" : "nullpointer-i18n",
     "version" : "0.0.1-SNAPSHOT",
     "description": "i18n RequireJS-module",
+    "keywords": ["i18n", "js", "javascript", "requirejs"],
 
     "author": {
         "name": "Nullpointer",
