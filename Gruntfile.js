@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         copy: {
             dist: {
                 src: 'src/i18n.js',
-                dest: 'dist/i18n.js'
+                dest: 'i18n.js'
             },
             docs: {
                 src: 'src/i18n.md',

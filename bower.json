@@ -4,7 +4,6 @@
     "description": "i18n RequireJS-module",
     "keywords": ["i18n", "js", "javascript", "requirejs"],
 
-    "main": ["./dist/i18n.js"],
     "ignore": [".*", "bower_components", "lib", "node_modules", "src", "test", "tmp", "Gruntfile.js", "package.json", "README.md"],
 
     "dependencies": {
