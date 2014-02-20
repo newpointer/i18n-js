@@ -151,7 +151,7 @@ define(function(require) {'use strict';
                 })
             })
 
-            describe('Перевод "системных ключей"', function(){
+            describe('Трансляция "системных ключей"', function(){
                 it('_tr - простой перевод', function(){
                     console.log("SYSTEM_ERROR", '->', t._tr("SYSTEM_ERROR"));
                     t._tr("SYSTEM_ERROR").should.equal("Системная ошибка");
@@ -270,7 +270,7 @@ define(function(require) {'use strict';
                 })
             })
 
-            describe('Перевод "системных ключей"', function(){
+            describe('Трансляция "системных ключей"', function(){
                 it('_tr - простой перевод', function(){
                     console.log("SYSTEM_ERROR", '->', t._tr("SYSTEM_ERROR"));
                     t._tr("SYSTEM_ERROR").should.equal("System error");
