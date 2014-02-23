@@ -23,9 +23,14 @@ define(function(require) {'use strict';
         _.extend(config, options);
     }
 
-    function setBundle(bundleJSON) {
-        bundle = bundleJSON;
-        pluralFormFuncs = buildPluralFormFuncs();
+    function setBundle(arg) {
+        if (_.isArray(arg)) {
+            makeBundle(arg);
+        } else if (_.isObject(arg)) {
+            makeBundle([arg]);
+        } else {
+            throw new Error('arg is must be object or array');
+        }
     }
 
     function setLang(lang) {
@@ -34,6 +39,26 @@ define(function(require) {'use strict';
             throw new Error('Lang is not supported: ' + lang);
         }
         langPluralFormIndex = pluralFormFuncs[lang];
+    }
+
+    function makeBundle(bundleList) {
+        var bundleJSON = bundleList[0],
+            i, b;
+
+        for (i = 1; i < bundleList.length; i++) {
+            b = bundleList[i];
+
+            _.each(b, function(langBundle, lang){
+                if (_.has(bundleJSON, lang)) {
+                    _.extend(bundleJSON[lang], langBundle);
+                } else {
+                    bundleJSON[lang] = langBundle;
+                }
+            });
+        }
+
+        bundle = bundleJSON;
+        pluralFormFuncs = buildPluralFormFuncs();
     }
 
     function buildPluralFormFuncs() {
