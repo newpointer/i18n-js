@@ -11,6 +11,14 @@ define(function(require) {'use strict';
     //
     var bundleContent   = require('text!test/bundle.json'),
         bundleJSON      = $.parseJSON(bundleContent),
+
+        bundle1Content  = require('text!test/bundle_1.json'),
+        bundle1JSON     = $.parseJSON(bundle1Content),
+        bundle2Content  = require('text!test/bundle_2.json'),
+        bundle2JSON     = $.parseJSON(bundle2Content),
+        bundle3Content  = require('text!test/bundle_3.json'),
+        bundle3JSON     = $.parseJSON(bundle3Content),
+
         template        = require('text!test/template.html'),
         template_ru     = require('text!test/template_ru.html'),
         template_en     = require('text!test/template_en.html');
@@ -396,6 +404,87 @@ define(function(require) {'use strict';
             message.translateFeeder(1).should.equal("ключ");
             message.translateFeeder(22).should.equal("ключа");
             message.translateFeeder(25).should.equal("ключей");
+        })
+    })
+
+    describe('Установка нескольких бандлов', function(){
+        it('Переводы', function(){
+            i18n.setBundle([bundle1JSON, bundle2JSON, bundle3JSON]);
+
+            //
+            i18n.setLang('ru');
+
+            t._tr("ключ").should.equal("ключ");
+            t._trc("ключ", "к разгадке чего-либо").should.equal("ключ");
+            t._trc("ключ", "ключ воды, приток реки").should.equal("ключ");
+
+            t._trn("ключ", 0).should.equal("ключей");
+            t._trn("ключ", 1).should.equal("ключ");
+            t._trn("ключ", 2).should.equal("ключа");
+            t._trn("ключ", 5).should.equal("ключей");
+
+            t._trnc("ключ", 0, "к разгадке чего-либо").should.equal("ключей");
+            t._trnc("ключ", 1, "к разгадке чего-либо").should.equal("ключ");
+            t._trnc("ключ", 2, "к разгадке чего-либо").should.equal("ключа");
+            t._trnc("ключ", 5, "к разгадке чего-либо").should.equal("ключей");
+
+            t._tr("корова").should.equal("корова");
+            t._trc("корова", "корова").should.equal("корова");
+            t._trn("корова", 0).should.equal("корова");
+            t._trn("корова", 1).should.equal("корова");
+            t._trn("корова", 2).should.equal("корова");
+
+            t._trnc("корова", 0, "корова").should.equal("корова");
+            t._trnc("корова", 1, "корова").should.equal("корова");
+            t._trnc("корова", 2, "корова").should.equal("корова");
+
+            t._tr("Красивый лиловый шар, наполненный водородом.").should.equal("Красивый лиловый шар, наполненный водородом.");
+            t._trn("Красивый лиловый шар, наполненный водородом.", 0).should.equal("Красивых лиловых шаров, наполненных водородом.");
+            t._trn("Красивый лиловый шар, наполненный водородом.", 1).should.equal("Красивый лиловый шар, наполненный водородом.");
+            t._trn("Красивый лиловый шар, наполненный водородом.", 2).should.equal("Красивых лиловых шара, наполненных водородом.");
+
+            t._tr("SYSTEM_ERROR").should.equal("Системная ошибка");
+
+            //
+            i18n.setLang('en');
+
+            t._tr("ключ").should.equal("key");
+
+            t._trc("ключ", "к разгадке чего-либо").should.equal("clue");
+            t._trc("ключ", "ключ воды, приток реки").should.equal("feeder");
+
+            t._trn("ключ", 0).should.equal("keys");
+            t._trn("ключ", 1).should.equal("key");
+            t._trn("ключ", 2).should.equal("keys");
+            t._trn("ключ", 5).should.equal("keys");
+
+            t._trnc("ключ", 0, "к разгадке чего-либо").should.equal("clues");
+            t._trnc("ключ", 1, "к разгадке чего-либо").should.equal("clue");
+            t._trnc("ключ", 2, "к разгадке чего-либо").should.equal("clues");
+            t._trnc("ключ", 5, "к разгадке чего-либо").should.equal("clues");
+
+
+            t._trnc("ключ", 0, "ключ воды, приток реки").should.equal("feeders");
+            t._trnc("ключ", 1, "ключ воды, приток реки").should.equal("feeder");
+            t._trnc("ключ", 2, "ключ воды, приток реки").should.equal("feeders");
+            t._trnc("ключ", 5, "ключ воды, приток реки").should.equal("feeders");
+
+            t._tr("корова").should.equal("cow");
+            t._trc("корова", "корова").should.equal("корова");
+            t._trn("корова", 0).should.equal("корова");
+            t._trn("корова", 1).should.equal("cow");
+            t._trn("корова", 2).should.equal("корова");
+
+            t._trnc("корова", 0, "корова").should.equal("корова");
+            t._trnc("корова", 1, "корова").should.equal("корова");
+            t._trnc("корова", 2, "корова").should.equal("корова");
+
+            t._tr("Красивый лиловый шар, наполненный водородом.").should.equal("Beautiful purple balloon filled with hydrogen.");
+            t._trn("Красивый лиловый шар, наполненный водородом.", 0).should.equal("Beautiful purple balloons filled with hydrogen.");
+            t._trn("Красивый лиловый шар, наполненный водородом.", 1).should.equal("Beautiful purple balloon filled with hydrogen.");
+            t._trn("Красивый лиловый шар, наполненный водородом.", 2).should.equal("Beautiful purple balloons filled with hydrogen.");
+
+            t._tr("SYSTEM_ERROR").should.equal("System error");
         })
     })
 });
