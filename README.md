@@ -2,6 +2,8 @@
 
 > RequireJS-модуль интернационализации
 
+[Использование](https://github.com/newpointer/i18n-js/tree/master/docs)
+
 ##Окружение
 
 Установить:
