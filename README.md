@@ -2,7 +2,7 @@
 
 > RequireJS-модуль интернационализации
 
-[Использование](https://github.com/newpointer/i18n-js/tree/master/docs)
+[Использование](https://github.com/newpointer/i18n-js/tree/master/docs/i18n.md)
 
 ##Окружение
 
