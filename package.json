@@ -1,8 +1,8 @@
 {
     "name" : "nullpointer-i18n",
-    "version" : "0.0.1-SNAPSHOT",
+    "version" : "1.0.0-SNAPSHOT",
     "description": "i18n RequireJS-module",
-    "keywords": ["i18n", "js", "javascript", "requirejs"],
+    "keywords": ["i18n", "l10n", "internationalization", "localization", "js", "javascript", "requirejs"],
 
     "author": {
         "name": "Nullpointer",
@@ -20,8 +20,8 @@
         "grunt-contrib-clean": "~0.5",
         "grunt-contrib-connect": "~0.6",
         "grunt-shell": "~0.6",
-        "grunt-bower-task": "~0.3",
-        "grunt-contrib-jshint": "~0.8",
+        "grunt-bower-task": "~0.4",
+        "grunt-contrib-jshint": "~0.11",
         "grunt-contrib-copy": "~0.5.0",
 
         "phantomjs": "~1.9",

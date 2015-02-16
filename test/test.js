@@ -3,7 +3,7 @@ require.config({
 
     paths: {
         // path to src dependencies files
-        'underscore':   'lib/underscore/underscore',
+        'lodash':   'lib/lodash-compat/lodash',
 
         // path to src dev dependencies files
         'jquery':       'lib/jquery/jquery',
@@ -22,13 +22,7 @@ require.config({
         name: 'i18n',
         location: 'src',
         main: 'i18n'
-    }],
-
-    shim: {
-        'underscore': {
-            exports: '_'
-        }
-    }
+    }]
 });
 
 define(function(require) {
@@ -44,4 +38,3 @@ define(function(require) {
         }
     });
 });
-
