@@ -1,21 +1,19 @@
 {
     "name" : "nullpointer-i18n",
-    "version" : "0.0.1-SNAPSHOT",
+    "version" : "1.0.0-SNAPSHOT",
     "description": "i18n RequireJS-module",
-    "keywords": ["i18n", "js", "javascript", "requirejs"],
+    "keywords": ["i18n", "l10n", "internationalization", "localization", "js", "javascript", "requirejs"],
 
     "ignore": [".*", "bower_components", "lib", "node_modules", "src", "test", "tmp", "Gruntfile.js", "package.json", "README.md"],
 
     "dependencies": {
         "requirejs": "2.*",
-        "underscore": "1.4.x"
+        "lodash-compat": "3.2.*"
     },
 
     "devDependencies": {
-        "requirejs": "2.*",
         "requirejs-text": "2.0.*",
-        "jquery": "1.9.x",
-        "underscore": "1.4.x"
+        "jquery": "1.9.*"
     },
 
     "exportsOverride": {
@@ -28,8 +26,8 @@
         "jquery": {
             "": "jquery.js"
         },
-        "underscore": {
-            "": "underscore.js"
+        "lodash-compat": {
+            "../lodash": "lodash.js"
         }
     },
 
