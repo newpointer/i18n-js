@@ -25,6 +25,9 @@
         },
         "jquery": {
             "": "jquery.js"
+        },
+        "lodash-compat": {
+            "../lodash": "lodash.js"
         }
     },
 

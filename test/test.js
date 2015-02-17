@@ -3,7 +3,7 @@ require.config({
 
     paths: {
         // path to src dependencies files
-        'lodash':   'lib/lodash-compat/lodash',
+        'lodash':   'lib/lodash/lodash',
 
         // path to src dev dependencies files
         'jquery':       'lib/jquery/jquery',
