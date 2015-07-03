@@ -8,7 +8,7 @@
 
     "dependencies": {
         "requirejs": "2.*",
-        "lodash-compat": "3.2.*"
+        "lodash-compat": "3.*"
     },
 
     "devDependencies": {
